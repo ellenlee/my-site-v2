@@ -10,6 +10,7 @@ const port = process.env.PORT || 3000;
 const NOTION_API_KEY = process.env.NOTION_API_KEY;
 const DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
+console.log('Server starting...');
 console.log('NOTION_API_KEY:', NOTION_API_KEY); // 打印以调试
 console.log('DATABASE_ID:', DATABASE_ID); // 打印以调试
 
@@ -31,7 +32,7 @@ app.get('/api/articles', async (req, res) => {
             id: page.id,
             title: page.properties.Title.title[0].plain_text
         }));
-
+        console.log('Sending articles response:', articles);
         res.json(articles);
     } catch (error) {
         console.error('Error fetching data from Notion API:', error.response ? error.response.data : error.message);
@@ -58,7 +59,7 @@ app.get('/api/article/:id', async (req, res) => {
             type: block.type,
             paragraph: block.paragraph
         }));
-
+        console.log('Sending blocks response:', blocks);
         res.json(blocks);
     } catch (error) {
         console.error('Error fetching data from Notion API:', error.response ? error.response.data : error.message);
