@@ -41,6 +41,7 @@ app.get('/api/articles', async (req, res) => {
 
 app.get('/api/article/:id', async (req, res) => {
     const pageId = req.params.id;
+    console.log(pageId)
 
     try {
         const response = await axios.get(`https://api.notion.com/v1/blocks/${pageId}/children`, {
