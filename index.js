@@ -11,8 +11,8 @@ const NOTION_API_KEY = process.env.NOTION_API_KEY;
 const DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
 console.log('Server starting...');
-console.log('NOTION_API_KEY:', NOTION_API_KEY); // 打印以调试
-console.log('DATABASE_ID:', DATABASE_ID); // 打印以调试
+console.log('NOTION_API_KEY:', NOTION_API_KEY);
+console.log('DATABASE_ID:', DATABASE_ID);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -27,7 +27,7 @@ app.get('/api/articles', async (req, res) => {
             }
         });
 
-        console.log('Notion API response data:', response.data); // 打印响应内容
+        console.log('Notion API response data:', response.data);
 
         const articles = response.data.results.map(page => ({
             id: page.id,
@@ -55,7 +55,7 @@ app.get('/api/article/:id', async (req, res) => {
             }
         });
 
-        console.log('Notion API blocks data:', response.data); // 打印响应内容
+        console.log('Notion API blocks data:', response.data);
 
         const blocks = response.data.results.map(block => ({
             type: block.type,
