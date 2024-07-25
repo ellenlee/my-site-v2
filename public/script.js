@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function() {
 async function fetchArticles() {
   try {
       const response = await fetch('/api/articles');
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
       const articles = await response.json();
       renderBlogCards(articles);
   } catch (error) {
@@ -31,6 +34,9 @@ async function fetchArticleContent(pageId) {
   console.log(`Fetching content for pageId: ${pageId}`);
   try {
       const response = await fetch(`/api/article/${pageId}`);
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
       const blocks = await response.json();
       console.log('Fetched blocks:', blocks); // 打印获取到的块内容
       displayArticle(blocks);
