@@ -28,9 +28,11 @@ function renderBlogCards(articles) {
 }
 
 async function fetchArticleContent(pageId) {
+  console.log(`Fetching content for pageId: ${pageId}`);
   try {
       const response = await fetch(`/api/article/${pageId}`);
       const blocks = await response.json();
+      console.log('Fetched blocks:', blocks); // 打印获取到的块内容
       displayArticle(blocks);
   } catch (error) {
       console.error('Error fetching article content:', error);
@@ -47,9 +49,11 @@ function displayArticle(blocks) {
   articleContent.innerHTML = '';
 
   blocks.forEach(block => {
-      const paragraph = document.createElement('p');
-      paragraph.textContent = block.paragraph.rich_text[0].text.content;
-      articleContent.appendChild(paragraph);
+      if (block.type === 'paragraph' && block.paragraph.rich_text.length > 0) {
+          const paragraph = document.createElement('p');
+          paragraph.textContent = block.paragraph.rich_text[0].text.content;
+          articleContent.appendChild(paragraph);
+      }
   });
 
   homepage.style.display = 'none';
