@@ -8,7 +8,9 @@ async function fetchArticles() {
       if (!response.ok) {
           throw new Error('Network response was not ok');
       }
-      const articles = await response.json();
+      const text = await response.text(); // 获取响应文本
+      console.log('API response text:', text); // 打印响应文本
+      const articles = JSON.parse(text); // 解析 JSON
       renderBlogCards(articles);
   } catch (error) {
       console.error('Error fetching articles:', error);
@@ -37,8 +39,9 @@ async function fetchArticleContent(pageId) {
       if (!response.ok) {
           throw new Error('Network response was not ok');
       }
-      const blocks = await response.json();
-      console.log('Fetched blocks:', blocks); // 打印获取到的块内容
+      const text = await response.text(); // 获取响应文本
+      console.log('API response text:', text); // 打印响应文本
+      const blocks = JSON.parse(text); // 解析 JSON
       displayArticle(blocks);
   } catch (error) {
       console.error('Error fetching article content:', error);

@@ -22,6 +22,8 @@ app.get('/api/articles', async (req, res) => {
             }
         });
 
+        console.log('Notion API response data:', response.data); // 添加这行来打印响应内容
+
         const articles = response.data.results.map(page => ({
             id: page.id,
             title: page.properties.Title.title[0].plain_text
@@ -45,6 +47,8 @@ app.get('/api/article/:id', async (req, res) => {
                 'Content-Type': 'application/json'
             }
         });
+
+        console.log('Notion API blocks data:', response.data); // 添加这行来打印响应内容
 
         const blocks = response.data.results.map(block => ({
             type: block.type,
