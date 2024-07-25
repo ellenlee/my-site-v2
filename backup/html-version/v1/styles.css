@@ -1,0 +1,217 @@
+/* 全局樣式 */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+/* 頭部樣式 */
+header {
+  background: #f4f4f4;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Hero 部分樣式 */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 0;
+  background: #e9ecef;
+}
+
+.hero-content {
+  flex: 1;
+  padding-right: 50px;
+}
+
+.hero-image {
+  flex: 1;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* 服務部分樣式 */
+.services {
+  padding: 50px 0;
+  background: #fff;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.service-card {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.service-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 觀點部分樣式 */
+.insights {
+  padding: 50px 0;
+  background: #e9ecef;
+}
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.insight-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.insight-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* 聯繫部分樣式 */
+.contact {
+  padding: 50px 0;
+  background: #f8f9fa;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-form {
+  flex: 1;
+  padding-right: 50px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.contact-form button {
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-image {
+  flex: 1;
+}
+
+.contact-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 頁腳樣式 */
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* 文章頁面樣式 */
+.article-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.article-meta {
+  color: #666;
+  font-style: italic;
+}
+
+.article-image {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+}
+
+.article-body {
+  line-height: 1.8;
+}
+
+.article-body h2 {
+  margin-top: 30px;
+}
+
+.article-body p {
+  margin-bottom: 20px;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henry Wang - 職涯規劃導師</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Homepage -->
+    <div id="homepage">
+        <div class="container">
+            <header>
+                <h1>Henry Wang</h1>
+                <nav>
+                    <a href="#services">我的服務</a>
+                    <a href="#blog">我的觀點</a>
+                    <a href="#contact">聯繫我</a>
+                </nav>
+            </header>
+
+            <div class="hero">
+                <div class="hero-content">
+                    <h2>Henry Wang</h2>
+                    <p>助你看見前路並立刻採取行動的專業職涯規劃導師</p>
+                    <div class="social-icons">
+                        <a href="#"><img src="/api/placeholder/30/30" alt="Facebook" /></a>
+                        <a href="#"><img src="/api/placeholder/30/30" alt="Instagram" /></a>
+                        <a href="#"><img src="/api/placeholder/30/30" alt="YouTube" /></a>
+                    </div>
+                    <p>henry.wang@contact.com</p>
+                    <button onclick="document.getElementById('contact').scrollIntoView();">與我聯絡</button>
+                </div>
+                <div class="hero-image">
+                    <img src="/api/placeholder/400/300" alt="Henry Wang" />
+                </div>
+            </div>
+
+            <div id="services">
+                <h2 class="section-title">我的服務</h2>
+                <div class="services">
+                    <div class="service-card">
+                        <img src="/api/placeholder/200/150" alt="一對一職涯規劃諮詢" />
+                        <h3>一對一職涯規劃諮詢</h3>
+                        <p>協助你釐清職涯方向，制定具體可行的職涯發展計畫。</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="/api/placeholder/200/150" alt="履歷撰寫" />
+                        <h3>履歷撰寫</h3>
+                        <p>協助你打造最能展現自我價值的履歷。</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="/api/placeholder/200/150" alt="大學科系選擇指導" />
+                        <h3>大學科系選擇指導</h3>
+                        <p>幫助高中生了解自己的興趣和能力，選擇最適合的大學科系。</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="/api/placeholder/200/150" alt="生涯規劃工作坊" />
+                        <h3>生涯規劃工作坊</h3>
+                        <p>透過小組活動，學習職涯規劃技巧，擴展人際網絡。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="blog">
+                <h2 class="section-title">我的觀點</h2>
+                <div id="blogContainer" class="blog">
+                    <!-- 動態生成的文章卡片將在這裡插入 -->
+                </div>
+            </div>
+
+            <div id="contact" class="contact">
+                <h2 class="section-title">與我聯繫</h2>
+                <div class="contact-content">
+                    <div class="contact-form">
+                        <form>
+                            <input type="text" placeholder="姓名" required>
+                            <input type="email" placeholder="Email" required>
+                            <textarea placeholder="你的需求" rows="5" required></textarea>
+                            <button type="submit">送出</button>
+                        </form>
+                    </div>
+                    <div class="contact-image">
+                        <img src="/api/placeholder/400/300" alt="Contact" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Page -->
+    <div id="articlePage" style="display: none;">
+        <div class="container">
+            <header>
+                <h1>Henry Wang</h1>
+                <nav>
+                    <a href="#" onclick="showHomepage()">首頁</a>
+                </nav>
+            </header>
+
+            <div class="article">
+                <h2 id="articleTitle"></h2>
+                <p id="articleMeta"></p>
+                <div id="articleContent"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>

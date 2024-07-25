@@ -1,0 +1,99 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+}
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0;
+}
+.hero-content {
+  width: 45%;
+}
+.hero-image {
+  width: 45%;
+}
+.hero-image img {
+  width: 100%;
+  height: auto;
+}
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.services, .blog {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 50px 0;
+}
+.service-card {
+  width: 23%;
+  margin-bottom: 20px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.blog-card {
+  width: 30%;
+  margin-bottom: 20px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.service-card img, .blog-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+.contact {
+  margin: 50px 0;
+}
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+}
+.contact-form, .contact-image {
+  width: 48%;
+}
+input, textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.social-icons a {
+  margin-right: 10px;
+}
