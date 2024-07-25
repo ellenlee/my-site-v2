@@ -17,6 +17,7 @@ console.log('DATABASE_ID:', DATABASE_ID); // 打印以调试
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/articles', async (req, res) => {
+    console.log('Request received at /api/articles');
     try {
         const response = await axios.post(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, {}, {
             headers: {
@@ -32,6 +33,7 @@ app.get('/api/articles', async (req, res) => {
             id: page.id,
             title: page.properties.Title.title[0].plain_text
         }));
+
         console.log('Sending articles response:', articles);
         res.json(articles);
     } catch (error) {
@@ -42,8 +44,8 @@ app.get('/api/articles', async (req, res) => {
 
 app.get('/api/article/:id', async (req, res) => {
     const pageId = req.params.id;
-    console.log(pageId)
 
+    console.log(`Request received at /api/article/${pageId}`);
     try {
         const response = await axios.get(`https://api.notion.com/v1/blocks/${pageId}/children`, {
             headers: {
@@ -59,6 +61,7 @@ app.get('/api/article/:id', async (req, res) => {
             type: block.type,
             paragraph: block.paragraph
         }));
+
         console.log('Sending blocks response:', blocks);
         res.json(blocks);
     } catch (error) {
