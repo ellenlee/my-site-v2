@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function fetchArticles() {
   try {
+      console.log('Fetching articles...');
       const response = await fetch('/api/articles');
       if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -11,6 +12,7 @@ async function fetchArticles() {
       const text = await response.text(); // 获取响应文本
       console.log('API response text:', text); // 打印响应文本
       const articles = JSON.parse(text); // 解析 JSON
+      console.log('Articles fetched:', articles);
       renderBlogCards(articles);
   } catch (error) {
       console.error('Error fetching articles:', error);
@@ -42,6 +44,7 @@ async function fetchArticleContent(pageId) {
       const text = await response.text(); // 获取响应文本
       console.log('API response text:', text); // 打印响应文本
       const blocks = JSON.parse(text); // 解析 JSON
+      console.log('Article content fetched:', blocks);
       displayArticle(blocks);
   } catch (error) {
       console.error('Error fetching article content:', error);
