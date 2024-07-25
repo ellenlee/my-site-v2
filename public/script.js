@@ -21,7 +21,6 @@ function renderBlogCards(articles) {
       card.className = 'blog-card';
       card.innerHTML = `
           <h3>${article.title}</h3>
-          <p>${article.content.substring(0, 100)}...</p>
           <button onclick="showArticle('${article.id}')">閱讀更多</button>
       `;
       blogContainer.appendChild(card);
@@ -30,15 +29,9 @@ function renderBlogCards(articles) {
 
 async function fetchArticleContent(pageId) {
   try {
-      const response = await fetch(`https://api.notion.com/v1/blocks/${pageId}/children`, {
-          headers: {
-              'Authorization': `Bearer ${NOTION_API_KEY}`,
-              'Notion-Version': '2022-06-28',
-              'Content-Type': 'application/json'
-          }
-      });
-      const data = await response.json();
-      displayArticle(data.results);
+      const response = await fetch(`/api/article/${pageId}`);
+      const blocks = await response.json();
+      displayArticle(blocks);
   } catch (error) {
       console.error('Error fetching article content:', error);
   }
@@ -48,7 +41,6 @@ function displayArticle(blocks) {
   const articlePage = document.getElementById('articlePage');
   const homepage = document.getElementById('homepage');
   const articleTitle = document.getElementById('articleTitle');
-  const articleMeta = document.getElementById('articleMeta');
   const articleContent = document.getElementById('articleContent');
 
   // Clear previous content
@@ -56,7 +48,7 @@ function displayArticle(blocks) {
 
   blocks.forEach(block => {
       const paragraph = document.createElement('p');
-      paragraph.textContent = block.paragraph.text[0].text.content;
+      paragraph.textContent = block.paragraph.rich_text[0].text.content;
       articleContent.appendChild(paragraph);
   });
 
@@ -64,8 +56,8 @@ function displayArticle(blocks) {
   articlePage.style.display = 'block';
 }
 
-function showArticle(articleId) {
-  fetchArticleContent(articleId);
+function showArticle(pageId) {
+  fetchArticleContent(pageId);
 }
 
 function showHomepage() {

@@ -24,16 +24,36 @@ app.get('/api/articles', async (req, res) => {
 
         const articles = response.data.results.map(page => ({
             id: page.id,
-            title: page.properties.Title.title[0].plain_text,
-            content: page.properties.Content.rich_text[0].plain_text,
-            date: page.properties.Date.date.start,
-            author: page.properties.Author.rich_text[0].plain_text,
-            status: page.properties.Status.status.name
+            title: page.properties.Title.title[0].plain_text
         }));
 
         res.json(articles);
     } catch (error) {
-        console.error(error);
+        console.error('Error fetching data from Notion API:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.get('/api/article/:id', async (req, res) => {
+    const pageId = req.params.id;
+
+    try {
+        const response = await axios.get(`https://api.notion.com/v1/blocks/${pageId}/children`, {
+            headers: {
+                'Authorization': `Bearer ${NOTION_API_KEY}`,
+                'Notion-Version': '2022-06-28',
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const blocks = response.data.results.map(block => ({
+            type: block.type,
+            paragraph: block.paragraph
+        }));
+
+        res.json(blocks);
+    } catch (error) {
+        console.error('Error fetching data from Notion API:', error);
         res.status(500).send('Internal Server Error');
     }
 });
