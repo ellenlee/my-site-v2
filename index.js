@@ -10,6 +10,9 @@ const port = process.env.PORT || 3000;
 const NOTION_API_KEY = process.env.NOTION_API_KEY;
 const DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
+console.log('NOTION_API_KEY:', NOTION_API_KEY); // 打印以调试
+console.log('DATABASE_ID:', DATABASE_ID); // 打印以调试
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/articles', async (req, res) => {
@@ -22,7 +25,7 @@ app.get('/api/articles', async (req, res) => {
             }
         });
 
-        console.log('Notion API response data:', response.data); // 添加这行来打印响应内容
+        console.log('Notion API response data:', response.data); // 打印响应内容
 
         const articles = response.data.results.map(page => ({
             id: page.id,
@@ -31,7 +34,7 @@ app.get('/api/articles', async (req, res) => {
 
         res.json(articles);
     } catch (error) {
-        console.error('Error fetching data from Notion API:', error);
+        console.error('Error fetching data from Notion API:', error.response ? error.response.data : error.message);
         res.status(500).send('Internal Server Error');
     }
 });
@@ -48,7 +51,7 @@ app.get('/api/article/:id', async (req, res) => {
             }
         });
 
-        console.log('Notion API blocks data:', response.data); // 添加这行来打印响应内容
+        console.log('Notion API blocks data:', response.data); // 打印响应内容
 
         const blocks = response.data.results.map(block => ({
             type: block.type,
@@ -57,7 +60,7 @@ app.get('/api/article/:id', async (req, res) => {
 
         res.json(blocks);
     } catch (error) {
-        console.error('Error fetching data from Notion API:', error);
+        console.error('Error fetching data from Notion API:', error.response ? error.response.data : error.message);
         res.status(500).send('Internal Server Error');
     }
 });
